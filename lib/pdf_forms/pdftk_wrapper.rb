@@ -38,7 +38,7 @@ module PdfForms
       q_template = normalize_path(template)
       q_destination = normalize_path(destination)
       fdf = data_format(data)
-      tmp = Tempfile.new('pdf_forms-fdf')
+      tmp = Tempfile.new('pdf_forms-fdf', ENV["HOME"] or "/tmp")
       tmp.close
       fdf.save_to tmp.path
       fill_options = {:tmp_path => tmp.path}.merge(fill_options)
